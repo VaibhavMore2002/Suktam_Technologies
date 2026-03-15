@@ -7,8 +7,7 @@ import Contact from "./pages/Contact";
 import WhyChooseUs from "./pages/WhyChooseUs";
 import OdooImplementation from "./pages/OdooImplementation";
 import Services from "./pages/Services";
-import ScrollToTop from "./components/ScrollToTop"; // Import the ScrollToTop component
-
+import ScrollToTop from "./components/ScrollToTop";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -39,7 +38,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Router>
-        <ScrollToTop /> Add ScrollToTop here
+        <ScrollToTop />
         <Nav />
         <main className="flex-grow">
           <Routes>
@@ -59,30 +58,37 @@ function App() {
 
       {/* Floating Action Buttons */}
       <div className="fixed bottom-6 right-4 flex flex-col items-center gap-3 z-50">
+        {/* WhatsApp */}
         <a
           href="https://wa.me/8208103515"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white shadow-md border border-gray-300 p-3 rounded-full hover:scale-110 transition"
+          className="relative group bg-white shadow-lg border border-gray-200 p-3 rounded-full hover:scale-110 transition-all duration-300 hover:shadow-xl"
         >
-          <FaWhatsapp className="text-green-500 text-xl" />
+          <FaWhatsapp className="text-emerald-500 text-xl" />
+          {/* Pulse ring */}
+          <span className="absolute inset-0 rounded-full border-2 border-emerald-400 opacity-0 group-hover:opacity-40 group-hover:animate-ping" />
         </a>
 
+        {/* Phone */}
         <a
           href="tel:+918208103515"
-          className="bg-sky-800 text-white p-3 rounded-full hover:scale-110 transition"
+          className="bg-gradient-to-br from-sky-700 to-sky-600 text-white p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-lg shadow-sky-500/20 hover:shadow-xl hover:shadow-sky-500/30"
         >
           <FaPhoneAlt className="text-lg" />
         </a>
 
-        {showScroll && (
-          <button
-            onClick={scrollToTop}
-            className="bg-sky-800 text-white p-3 rounded-full hover:scale-110 transition"
-          >
-            <FaArrowUp className="text-lg" />
-          </button>
-        )}
+        {/* Scroll to Top */}
+        <button
+          onClick={scrollToTop}
+          className={`bg-gradient-to-br from-sky-700 to-sky-600 text-white p-3 rounded-full transition-all duration-300 shadow-lg shadow-sky-500/20 hover:shadow-xl hover:shadow-sky-500/30 hover:scale-110 cursor-pointer ${
+            showScroll
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4 pointer-events-none"
+          }`}
+        >
+          <FaArrowUp className="text-lg" />
+        </button>
       </div>
     </div>
   );
