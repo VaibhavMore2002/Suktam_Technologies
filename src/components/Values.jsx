@@ -2,20 +2,31 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaBullseye, FaEye, FaHeart } from "react-icons/fa";
+import { useTheme } from "../ThemeContext";
 
 const Values = () => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+    <section
+      className="py-20 relative overflow-hidden"
+      style={{
+        background: isDark
+          ? 'linear-gradient(to bottom, var(--bg-base), var(--bg-subtle))'
+          : 'linear-gradient(to bottom, #ffffff, #f8fafc)',
+      }}
+    >
       {/* BG accent */}
-      <div className="absolute top-1/2 right-0 w-[350px] h-[350px] bg-sky-100/30 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" />
+      <div className={`absolute top-1/2 right-0 w-[350px] h-[350px] rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 ${isDark ? 'bg-indigo-500/5' : 'bg-indigo-100/30'}`} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 head section-heading">
+          <h2 className="text-3xl md:text-4xl font-bold head section-heading" style={{ color: 'var(--text-primary)' }}>
             Our Mission & Core Values
           </h2>
         </div>
@@ -27,17 +38,17 @@ const Values = () => {
         >
           <div className="w-full lg:w-1/2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="icon-circle icon-circle-blue">
-                <FaBullseye className="text-sky-600 text-xl" />
+              <div className="icon-circle icon-circle-indigo">
+                <FaBullseye className="text-indigo-500 text-xl" />
               </div>
-              <span className="text-xs font-semibold tracking-widest text-sky-600 uppercase">
+              <span className="text-xs font-semibold tracking-widest text-indigo-500 uppercase">
                 Our Mission
               </span>
             </div>
-            <h3 className="head text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
+            <h3 className="head text-2xl md:text-3xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
               Empowering Businesses Through Innovation
             </h3>
-            <p className="text-gray-500 text-[16px] leading-relaxed">
+            <p className="text-[16px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               To empower businesses with smart, scalable ERP solutions that
               enhance productivity, reduce operational friction, and
               accelerate growth using the power of Odoo.
@@ -50,13 +61,13 @@ const Values = () => {
                 alt="Suktam Technologies Mission"
                 className="rounded-2xl shadow-lg object-cover w-full h-auto group-hover:shadow-xl transition-shadow duration-400"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-sky-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-indigo-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
             </div>
           </div>
         </div>
 
         {/* Gradient Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-sky-200 to-transparent mb-16" />
+        <div className="h-px bg-gradient-to-r from-transparent via-indigo-300/30 to-transparent mb-16" />
 
         {/* Vision Section */}
         <div
@@ -65,17 +76,17 @@ const Values = () => {
         >
           <div className="w-full lg:w-1/2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="icon-circle icon-circle-green">
-                <FaEye className="text-emerald-600 text-xl" />
+              <div className="icon-circle icon-circle-emerald">
+                <FaEye className="text-emerald-500 text-xl" />
               </div>
-              <span className="text-xs font-semibold tracking-widest text-emerald-600 uppercase">
+              <span className="text-xs font-semibold tracking-widest text-emerald-500 uppercase">
                 Our Vision
               </span>
             </div>
-            <h3 className="head text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
+            <h3 className="head text-2xl md:text-3xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
               Leading Global Digital Transformation
             </h3>
-            <p className="text-gray-500 text-[16px] leading-relaxed">
+            <p className="text-[16px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               To become a global leader in delivering innovative ERP services
               that help businesses of all sizes digitally transform and scale
               with confidence.
@@ -94,7 +105,7 @@ const Values = () => {
         </div>
 
         {/* Gradient Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-orange-200 to-transparent mb-16" />
+        <div className="h-px bg-gradient-to-r from-transparent via-violet-300/30 to-transparent mb-16" />
 
         {/* Core Values Section */}
         <div
@@ -103,14 +114,14 @@ const Values = () => {
         >
           <div className="w-full lg:w-1/2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="icon-circle icon-circle-orange">
-                <FaHeart className="text-orange-500 text-xl" />
+              <div className="icon-circle icon-circle-violet">
+                <FaHeart className="text-violet-500 text-xl" />
               </div>
-              <span className="text-xs font-semibold tracking-widest text-orange-500 uppercase">
+              <span className="text-xs font-semibold tracking-widest text-violet-500 uppercase">
                 Core Values
               </span>
             </div>
-            <h3 className="head text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+            <h3 className="head text-2xl md:text-3xl font-semibold mb-6" style={{ color: 'var(--text-primary)' }}>
               What Drives Us Every Day
             </h3>
             <div className="space-y-3">
@@ -123,10 +134,20 @@ const Values = () => {
               ].map((value, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-100 hover:border-orange-200 hover:shadow-sm transition-all duration-300"
+                  className="flex items-center gap-3 p-3 rounded-xl transition-all duration-300"
+                  style={{
+                    backgroundColor: isDark ? 'var(--bg-card)' : '#ffffff',
+                    border: `1px solid ${isDark ? 'var(--border-default)' : '#f1f5f9'}`,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = isDark ? 'rgba(139,92,246,0.3)' : 'rgba(139,92,246,0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = isDark ? 'var(--border-default)' : '#f1f5f9';
+                  }}
                 >
-                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-amber-400 flex-shrink-0" />
-                  <span className="text-gray-700 text-[15px] font-medium">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 flex-shrink-0" />
+                  <span className="text-[15px] font-medium" style={{ color: 'var(--text-primary)' }}>
                     {value}
                   </span>
                 </div>
@@ -140,7 +161,7 @@ const Values = () => {
                 alt="Suktam Technologies Values"
                 className="rounded-2xl shadow-lg object-cover w-full h-auto group-hover:shadow-xl transition-shadow duration-400"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-orange-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-violet-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
             </div>
           </div>
         </div>

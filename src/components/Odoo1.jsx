@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useTheme } from "../ThemeContext";
 
 const Odoo1 = () => {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  useEffect(() => { AOS.init({ duration: 800, once: true }); }, []);
 
   const steps = [
     { title: "Define Business Goals", desc: "We begin by understanding your key business goals to tailor the ERP effectively." },
@@ -23,68 +24,39 @@ const Odoo1 = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
-      {/* BG accent */}
-      <div className="absolute top-20 right-0 w-[300px] h-[300px] bg-sky-100/30 rounded-full blur-[100px]" />
-
+    <section className="py-16 relative overflow-hidden" style={{ background: isDark ? 'linear-gradient(to bottom, var(--bg-base), var(--bg-subtle))' : 'linear-gradient(to bottom, var(--bg-base), var(--bg-subtle))' }}>
+      <div className={`absolute top-20 right-0 w-[300px] h-[300px] rounded-full blur-[100px] ${isDark ? 'bg-orange-500/5' : 'bg-orange-200/20'}`} />
       <div className="container mx-auto px-4 relative z-10">
-        <h2
-          className="head text-3xl md:text-4xl font-bold text-center mb-14 text-gray-800 section-heading"
-          data-aos="fade-up"
-        >
-          Odoo Implementation Steps
-        </h2>
-
-        {/* Timeline */}
+        <h2 className="head text-3xl md:text-4xl font-bold text-center mb-14 section-heading" style={{ color: 'var(--text-primary)' }} data-aos="fade-up">Odoo Implementation Steps</h2>
         <div className="relative max-w-4xl mx-auto">
-          {/* Gradient Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-sky-500 via-sky-400 to-orange-400 rounded-full hidden md:block" />
-
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-orange-500 via-amber-400 to-blue-500 rounded-full hidden md:block" />
           <div className="flex flex-col space-y-6">
-            {steps.map((step, index) => {
-              const isLeft = index % 2 === 0;
+            {steps.map((step, i) => {
+              const isLeft = i % 2 === 0;
               return (
-                <div
-                  key={index}
-                  className="flex justify-between items-center w-full"
-                  data-aos={isLeft ? "fade-right" : "fade-left"}
-                  data-aos-delay={index * 60}
-                >
-                  {/* Left Side */}
+                <div key={i} className="flex justify-between items-center w-full" data-aos={isLeft ? "fade-right" : "fade-left"} data-aos-delay={i * 60}>
                   <div className={`w-5/12 ${isLeft ? "text-right" : ""} hidden md:block`}>
                     {isLeft && (
-                      <div className="glow-card bg-white p-5 rounded-xl shadow-sm border border-gray-100 inline-block text-left">
+                      <div className="glow-card p-5 rounded-xl inline-block text-left">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs font-bold text-sky-500 bg-sky-50 px-2 py-0.5 rounded-full">
-                            Step {index + 1}
-                          </span>
+                          <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${isDark ? 'text-orange-300 bg-orange-500/15' : 'text-blue-700 bg-orange-100'}`}>Step {i + 1}</span>
                         </div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-1">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                        <h3 className="text-base font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{step.title}</h3>
+                        <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{step.desc}</p>
                       </div>
                     )}
                   </div>
-
-                  {/* Timeline Dot */}
                   <div className="hidden md:flex w-2/12 justify-center items-center relative">
-                    <div className="w-4 h-4 bg-gradient-to-br from-sky-500 to-sky-400 rounded-full z-10 shadow-md shadow-sky-500/30 transition-all duration-300 hover:scale-125" />
+                    <div className="w-4 h-4 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full z-10 shadow-md shadow-orange-500/30 transition-all duration-300 hover:scale-125" />
                   </div>
-
-                  {/* Right Side */}
                   <div className={`w-full md:w-5/12 ${!isLeft ? "text-left" : ""}`}>
                     {(!isLeft || true) && (
-                      <div className={`glow-card bg-white p-5 rounded-xl shadow-sm border border-gray-100 ${isLeft ? "md:hidden" : ""}`}>
+                      <div className={`glow-card p-5 rounded-xl ${isLeft ? "md:hidden" : ""}`}>
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs font-bold text-sky-500 bg-sky-50 px-2 py-0.5 rounded-full">
-                            Step {index + 1}
-                          </span>
+                          <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${isDark ? 'text-orange-300 bg-orange-500/15' : 'text-blue-700 bg-orange-100'}`}>Step {i + 1}</span>
                         </div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-1">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                        <h3 className="text-base font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{step.title}</h3>
+                        <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{step.desc}</p>
                       </div>
                     )}
                   </div>

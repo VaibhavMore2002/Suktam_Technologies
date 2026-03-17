@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useTheme } from "../ThemeContext";
 
-// Replace with actual client images
 const testimonials = [
   {
     name: "Ankit Shah",
@@ -28,27 +28,37 @@ const testimonials = [
   },
   {
     name: "Rohit Jain",
-    quote: "I’d recommend Suktam Technologies to any business going digital.",
+    quote: "I'd recommend Suktam Technologies to any business going digital.",
     image: "https://images.unsplash.com/photo-1607081692251-d689f1b9af84?q=80&w=1974",
   },
 ];
 
 const Testimonial = () => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
   return (
-    <section className="py-20 bg-sky-50 overflow-hidden">
+    <section
+      className="py-20 overflow-hidden"
+      style={{
+        backgroundColor: isDark ? 'var(--bg-subtle)' : '#eef2ff',
+      }}
+    >
       <div className="text-center mb-12 px-4">
         <h2
-          className="head text-3xl md:text-4xl font-bold text-gray-800"
+          className="head text-3xl md:text-4xl font-bold"
+          style={{ color: 'var(--text-primary)' }}
           data-aos="fade-up"
         >
           What Our Clients Say
         </h2>
         <p
-          className="mt-2 text-gray-600"
+          className="mt-2"
+          style={{ color: 'var(--text-secondary)' }}
           data-aos="fade-up"
           data-aos-delay="100"
         >
@@ -64,17 +74,21 @@ const Testimonial = () => {
           {[...testimonials, ...testimonials].map((client, idx) => (
             <div
               key={idx}
-              className="flex-none w-80 bg-white rounded-xl shadow-lg hover:shadow-xl p-6 text-center transition-transform duration-300 transform hover:scale-105"
+              className="flex-none w-80 rounded-xl shadow-lg hover:shadow-xl p-6 text-center transition-transform duration-300 transform hover:scale-105"
+              style={{
+                backgroundColor: isDark ? 'var(--bg-card)' : '#ffffff',
+                border: `1px solid ${isDark ? 'var(--border-default)' : 'transparent'}`,
+              }}
               data-aos="fade-up"
               data-aos-delay={idx * 100}
             >
               <img
                 src={client.image}
                 alt={client.name}
-                className="w-20 h-20 object-cover rounded-full mx-auto mb-4 border-4 border-sky-500"
+                className="w-20 h-20 object-cover rounded-full mx-auto mb-4 border-4 border-indigo-500"
               />
-              <p className="text-gray-700 italic mb-3">"{client.quote}"</p>
-              <h4 className="text-gray-900 font-semibold">{client.name}</h4>
+              <p className="italic mb-3" style={{ color: 'var(--text-secondary)' }}>"{client.quote}"</p>
+              <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>{client.name}</h4>
             </div>
           ))}
         </div>

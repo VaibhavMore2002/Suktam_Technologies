@@ -5,10 +5,10 @@ import logo from "/logo.jpg";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-[#0a1628] via-[#0c2340] to-[#0e3050] text-gray-300 pt-16 pb-8 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-[#0f0a1a] via-[#12102a] to-[#160e35] text-gray-300 pt-16 pb-8 overflow-hidden">
       {/* Subtle BG accent */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-sky-500/5 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-orange-500/5 rounded-full blur-[80px]" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-violet-500/5 rounded-full blur-[80px]" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-10">
@@ -45,7 +45,7 @@ const Footer = () => {
                     }
                     className="group flex items-center text-gray-400 hover:text-white transition-colors duration-300"
                   >
-                    <span className="w-0 group-hover:w-4 h-px bg-gradient-to-r from-sky-400 to-blue-400 mr-0 group-hover:mr-2 transition-all duration-300" />
+                    <span className="w-0 group-hover:w-4 h-px bg-gradient-to-r from-indigo-400 to-violet-400 mr-0 group-hover:mr-2 transition-all duration-300" />
                     {link.name}
                   </NavLink>
                 </li>
@@ -71,14 +71,14 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-sky-500/10 flex items-center justify-center flex-shrink-0">
-                  <FaEnvelope className="text-sky-400 text-xs" />
+                <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
+                  <FaEnvelope className="text-indigo-400 text-xs" />
                 </div>
                 <span className="text-gray-400">contact@suktam.com</span>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                  <FaLinkedin className="text-blue-400 text-xs" />
+                <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center flex-shrink-0">
+                  <FaLinkedin className="text-violet-400 text-xs" />
                 </div>
                 <a
                   href="https://www.linkedin.com/company/tech-square-erp"
@@ -106,7 +106,7 @@ const Footer = () => {
               onClick={() =>
                 window.scrollTo({ top: 0, behavior: "smooth" })
               }
-              className="group inline-flex items-center bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-700 hover:to-sky-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/20"
+              className="group inline-flex items-center bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20"
             >
               Contact Us
               <FaArrowRight className="ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300" />

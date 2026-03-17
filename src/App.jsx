@@ -16,9 +16,11 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 
 import { FaWhatsapp, FaPhoneAlt, FaArrowUp } from "react-icons/fa";
+import { useTheme } from "./ThemeContext";
 
 function App() {
   const [showScroll, setShowScroll] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     AOS.init();
@@ -36,7 +38,9 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className={`flex flex-col min-h-screen transition-colors duration-300`}
+      style={{ backgroundColor: 'var(--bg-base)', color: 'var(--text-primary)' }}
+    >
       <Router>
         <ScrollToTop />
         <Nav />
@@ -63,17 +67,17 @@ function App() {
           href="https://wa.me/8208103515"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative group bg-white shadow-lg border border-gray-200 p-3 rounded-full hover:scale-110 transition-all duration-300 hover:shadow-xl"
+          className="relative group shadow-lg p-3 rounded-full hover:scale-110 transition-all duration-300 hover:shadow-xl"
+          style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-default)' }}
         >
           <FaWhatsapp className="text-emerald-500 text-xl" />
-          {/* Pulse ring */}
           <span className="absolute inset-0 rounded-full border-2 border-emerald-400 opacity-0 group-hover:opacity-40 group-hover:animate-ping" />
         </a>
 
         {/* Phone */}
         <a
           href="tel:+918208103515"
-          className="bg-gradient-to-br from-sky-700 to-sky-600 text-white p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-lg shadow-sky-500/20 hover:shadow-xl hover:shadow-sky-500/30"
+          className="bg-gradient-to-br from-indigo-600 to-violet-600 text-white p-3 rounded-full hover:scale-110 transition-all duration-300 shadow-lg shadow-indigo-500/20 hover:shadow-xl hover:shadow-indigo-500/30"
         >
           <FaPhoneAlt className="text-lg" />
         </a>
@@ -81,11 +85,10 @@ function App() {
         {/* Scroll to Top */}
         <button
           onClick={scrollToTop}
-          className={`bg-gradient-to-br from-sky-700 to-sky-600 text-white p-3 rounded-full transition-all duration-300 shadow-lg shadow-sky-500/20 hover:shadow-xl hover:shadow-sky-500/30 hover:scale-110 cursor-pointer ${
-            showScroll
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4 pointer-events-none"
-          }`}
+          className={`bg-gradient-to-br from-indigo-600 to-violet-600 text-white p-3 rounded-full transition-all duration-300 shadow-lg shadow-indigo-500/20 hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-110 cursor-pointer ${showScroll
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4 pointer-events-none"
+            }`}
         >
           <FaArrowUp className="text-lg" />
         </button>
