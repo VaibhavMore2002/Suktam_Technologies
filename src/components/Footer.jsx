@@ -5,21 +5,22 @@ import logo from "/logo.jpg";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-[#0f0a1a] via-[#12102a] to-[#160e35] text-gray-300 pt-16 pb-8 overflow-hidden">
-      {/* Subtle BG accent */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-violet-500/5 rounded-full blur-[80px]" />
+    <footer className="footer-root relative pt-16 pb-8 overflow-hidden">
+      {/* Decorative blobs */}
+      <div className="footer-blob footer-blob-tl" />
+      <div className="footer-blob footer-blob-br" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-10">
+
           {/* Logo & Tagline */}
           <div>
             <img
               src={logo}
               alt="Suktam Technologies Logo"
-              className="h-12 mb-5"
+              className="h-12 mb-5 drop-shadow-md"
             />
-            <p className="text-sm text-gray-400 leading-relaxed">
+            <p className="footer-tagline text-sm leading-relaxed">
               Transforming Businesses with Smart ERP Solutions. Your trusted
               Odoo partner.
             </p>
@@ -27,7 +28,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-base font-semibold mb-5 text-white tracking-wide">
+            <h4 className="footer-heading text-base font-semibold mb-5 tracking-wide">
               Quick Links
             </h4>
             <ul className="space-y-3 text-sm">
@@ -43,9 +44,9 @@ const Footer = () => {
                     onClick={() =>
                       window.scrollTo({ top: 0, behavior: "smooth" })
                     }
-                    className="group flex items-center text-gray-400 hover:text-white transition-colors duration-300"
+                    className="footer-link group flex items-center transition-colors duration-300"
                   >
-                    <span className="w-0 group-hover:w-4 h-px bg-gradient-to-r from-indigo-400 to-violet-400 mr-0 group-hover:mr-2 transition-all duration-300" />
+                    <span className="footer-link-bar w-0 group-hover:w-4 h-px mr-0 group-hover:mr-2 transition-all duration-300" />
                     {link.name}
                   </NavLink>
                 </li>
@@ -55,36 +56,41 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-base font-semibold mb-5 text-white tracking-wide">
+            <h4 className="footer-heading text-base font-semibold mb-5 tracking-wide">
               Contact
             </h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                  <FaPhoneAlt className="text-emerald-400 text-xs" />
+                <div className="footer-icon-box footer-icon-phone flex-shrink-0">
+                  <FaPhoneAlt className="text-xs" />
                 </div>
                 <a
                   href="tel:+918208103515"
-                  className="hover:text-white transition-colors duration-300"
+                  className="footer-link transition-colors duration-300"
                 >
                   +91 82081 03515
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
-                  <FaEnvelope className="text-indigo-400 text-xs" />
+                <div className="footer-icon-box footer-icon-email flex-shrink-0">
+                  <FaEnvelope className="text-xs" />
                 </div>
-                <span className="text-gray-400">contact@suktam.com</span>
+                <a
+                  href="mailto:contact@suktam.com"
+                  className="footer-link transition-colors duration-300"
+                >
+                  contact@suktam.com
+                </a>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center flex-shrink-0">
-                  <FaLinkedin className="text-violet-400 text-xs" />
+                <div className="footer-icon-box footer-icon-linkedin flex-shrink-0">
+                  <FaLinkedin className="text-xs" />
                 </div>
                 <a
                   href="https://www.linkedin.com/company/tech-square-erp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors duration-300"
+                  className="footer-link transition-colors duration-300"
                 >
                   LinkedIn Profile
                 </a>
@@ -94,10 +100,10 @@ const Footer = () => {
 
           {/* CTA */}
           <div>
-            <h4 className="text-base font-semibold mb-5 text-white tracking-wide">
+            <h4 className="footer-heading text-base font-semibold mb-5 tracking-wide">
               Let's Talk
             </h4>
-            <p className="text-sm text-gray-400 mb-5 leading-relaxed">
+            <p className="footer-tagline text-sm mb-5 leading-relaxed">
               Looking for ERP solutions tailored to your business? Let's start a
               conversation.
             </p>
@@ -106,7 +112,7 @@ const Footer = () => {
               onClick={() =>
                 window.scrollTo({ top: 0, behavior: "smooth" })
               }
-              className="group inline-flex items-center bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20"
+              className="footer-cta-btn group inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300"
             >
               Contact Us
               <FaArrowRight className="ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300" />
@@ -115,8 +121,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-white/8 text-center">
-          <p className="text-xs text-gray-500">
+        <div className="footer-bottom mt-12 pt-6 text-center">
+          <p className="footer-copyright text-xs">
             © {new Date().getFullYear()} Suktam Technologies. All rights
             reserved.
           </p>

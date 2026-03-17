@@ -25,7 +25,7 @@ const Contact = () => {
   return (
     <>
       <section className="mt-[72px] relative h-[30vh] bg-center bg-cover flex items-center justify-center text-center overflow-hidden" style={{ backgroundImage: `url('/contact.jpg')` }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-700/92 via-orange-600/87 to-amber-600/82" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/90 via-amber-500/88 to-yellow-500/82" />
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-4 right-8 w-20 h-20 border border-white/8 rounded-full animate-float-slow" />
         </div>
